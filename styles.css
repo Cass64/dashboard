@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #23272A;
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.discord-btn {
+    background-color: #5865F2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.discord-btn:hover {
+    background-color: #4752C4;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #2C2F33;
+}
