@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification</title>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            // Stocker le code dans le localStorage pour utilisation
+            localStorage.setItem("discord_code", code);
+            window.location.href = "dashboard.html";  // Rediriger vers le dashboard
+        } else {
+            alert("Erreur lors de l'authentification.");
+            window.location.href = "index.html";  // Retour à la page de connexion
+        }
+    </script>
+</head>
+<body>
+    <h1>Authentification en cours...</h1>
+</body>
+</html>
