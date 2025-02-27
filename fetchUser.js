@@ -32,7 +32,7 @@ async function fetchUser(accessToken) {
 
     try {
         const response = await fetch(API_URL, {
-            headers: { "Authorization": accessToken }
+            headers: { "Authorization": `Bearer ${accessToken}` }
         });
 
         if (!response.ok) throw new Error("Erreur lors de la récupération des infos utilisateur.");
@@ -41,7 +41,7 @@ async function fetchUser(accessToken) {
         localStorage.setItem("user_data", JSON.stringify(userData));
 
         // Rediriger vers le dashboard
-        window.location.href = "dashboard.html";
+        window.location.href = "servers.html";
     } catch (error) {
         console.error(error);
         alert("Échec de la récupération des données.");
