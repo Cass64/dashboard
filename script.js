@@ -1,24 +1,19 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const fragment = new URLSearchParams(window.location.hash.substring(1));
-    const accessToken = fragment.get("access_token");
-
-    if (!accessToken) {
-        window.location.href = "index.html";
-        return;
-    }
-
     try {
-        const userResponse = await fetch("https://discord.com/api/users/@me", {
-            headers: { Authorization: `Bearer ${accessToken}` }
-        });
-        const user = await userResponse.json();
+        const response = await fetch("/api/discord/user"); // Récupère les infos depuis le serveur
+        const data = await response.json();
 
-        const guildResponse = await fetch("https://discord.com/api/users/@me/guilds", {
-            headers: { Authorization: `Bearer ${accessToken}` }
-        });
-        const guilds = await guildResponse.json();
+        if (data.error) {
+            console.error("Erreur :", data.error);
+            window.location.href = "index.html";
+            return;
+        }
 
-        const adminGuilds = guilds.filter(g => (g.permissions & 0x20) === 0x20);
+        // Affichage du nom d'utilisateur
+        document.getElementById("username").innerText = `Bonjour, ${data.username}#${data.discriminator}`;
+
+        // Filtrer les serveurs où l'utilisateur est admin
+        const adminGuilds = data.guilds.filter(g => (g.permissions & 0x20) === 0x20);
         const serverList = document.getElementById("serverList");
 
         if (adminGuilds.length === 0) {
@@ -34,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         }
     } catch (error) {
-        console.error("Erreur :", error);
+        console.error("Erreur lors de la récupération des données :", error);
         window.location.href = "index.html";
     }
 });
