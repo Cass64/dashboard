@@ -5,21 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirection...</title>
     <script src="fetchUser.js"></script>
-    <script>
-        // Récupérer le code dans l'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-
-        if (code) {
-            // Stocker le code temporairement
-            localStorage.setItem("discord_code", code);
-            // Redirection vers le dashboard
-            window.location.href = "dashboard.html";  
-        } else {
-            alert("Erreur d'authentification.");
-            window.location.href = "index.html";  
-        }
-    </script>
+<script>
+    window.location.href = "/api/discord/callback" + window.location.search;
+</script>
 </head>
 <body>
     <h1>Authentification en cours...</h1>
