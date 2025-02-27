@@ -1,19 +1,17 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const response = await fetch("/api/discord/user"); // Récupère les infos depuis le serveur
-        const data = await response.json();
+        const userData = JSON.parse(localStorage.getItem("user_data"));
 
-        if (data.error) {
-            console.error("Erreur :", data.error);
+        if (!userData) {
             window.location.href = "index.html";
             return;
         }
 
         // Affichage du nom d'utilisateur
-        document.getElementById("username").innerText = `Bonjour, ${data.username}#${data.discriminator}`;
+        document.getElementById("username").innerText = `Bonjour, ${userData.username}#${userData.discriminator}`;
 
         // Filtrer les serveurs où l'utilisateur est admin
-        const adminGuilds = data.guilds.filter(g => (g.permissions & 0x20) === 0x20);
+        const adminGuilds = userData.guilds.filter(g => (g.permissions & 0x20) === 0x20);
         const serverList = document.getElementById("serverList");
 
         if (adminGuilds.length === 0) {
