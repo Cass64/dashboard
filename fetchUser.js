@@ -28,7 +28,7 @@ async function fetchToken(code) {
 }
 
 async function fetchUser(accessToken) {
-    const API_URL = "https://ton-backend-sur-render.com/auth/user";  // Remplace par ton URL Render
+    const API_URL = "https://dashboard-l77g.onrender.com/callback";  // Remplace par ton URL Render
 
     try {
         const response = await fetch(API_URL, {
