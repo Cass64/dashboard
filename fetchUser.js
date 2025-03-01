@@ -9,7 +9,7 @@ if (!code) {
 }
 
 async function fetchToken(code) {
-    const API_URL = "https://dashboard-l77g.onrender.com/callback";  // Remplace par ton URL Render
+    const API_URL = "https://dashboard-l77g.onrender.com/auth/callback";  // Remplace par ton URL Render
 
     try {
         const response = await fetch(`${API_URL}?code=${code}`);
