@@ -1,6 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get("code");
 
+console.log("Code obtenu: ", code);  // Ajoute cette ligne pour vérifier le code
+
 if (!code) {
     alert("Erreur d'authentification.");
     window.location.href = "index.html";
