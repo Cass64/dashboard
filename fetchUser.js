@@ -9,7 +9,7 @@ if (!code) {
 }
 
 async function fetchToken(code) {
-    const API_URL = "https://casseco-6sa8.onrender.com/";  // Remplace par ton URL Render
+    const API_URL = "https://casseco-6sa8.onrender.com/auth/callback";  // Remplace par ton URL Render
 
     try {
         const response = await fetch(`${API_URL}?code=${code}`);
@@ -28,7 +28,7 @@ async function fetchToken(code) {
 }
 
 async function fetchUser(accessToken) {
-    const API_URL = "https://casseco-6sa8.onrender.com/";  // Remplace par ton URL Render
+    const API_URL = "https://casseco-6sa8.onrender.com/auth/callback";  // Remplace par ton URL Render
 
     try {
         const response = await fetch(API_URL, {
