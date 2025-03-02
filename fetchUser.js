@@ -40,6 +40,7 @@ async function fetchUser(accessToken) {
         if (!response.ok) throw new Error("Erreur lors de la récupération des infos utilisateur.");
 
         const userData = await response.json();
+        console.log("Données utilisateur: ", userData);  // Vérifie si les données sont reçues
         localStorage.setItem("user_data", JSON.stringify(userData));
 
         // Optionnel : Afficher les données de l'utilisateur dans la console pour déboguer
