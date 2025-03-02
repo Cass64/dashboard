@@ -9,7 +9,7 @@ if (!code) {
 }
 
 async function fetchToken(code) {
-    const API_URL = "https://casseco-6sa8.onrender.com/auth/callback";  // Remplace par ton URL Render
+    const API_URL = "https://casseco-6sa8.onrender.com/auth/callback";
 
     try {
         const response = await fetch(`${API_URL}?code=${code}`);
@@ -18,7 +18,6 @@ async function fetchToken(code) {
         const tokenData = await response.json();
         localStorage.setItem("access_token", tokenData.access_token);
 
-        // Récupérer les infos de l'utilisateur
         fetchUser(tokenData.access_token);
     } catch (error) {
         console.error(error);
@@ -28,7 +27,7 @@ async function fetchToken(code) {
 }
 
 async function fetchUser(accessToken) {
-    const API_URL = "https://casseco-6sa8.onrender.com/auth/callback";  // Remplace par ton URL Render
+    const API_URL = "https://casseco-6sa8.onrender.com/auth/user";
 
     try {
         const response = await fetch(API_URL, {
@@ -40,7 +39,6 @@ async function fetchUser(accessToken) {
         const userData = await response.json();
         localStorage.setItem("user_data", JSON.stringify(userData));
 
-        // Rediriger vers le dashboard
         window.location.href = "servers.html";
     } catch (error) {
         console.error(error);
