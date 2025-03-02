@@ -18,6 +18,7 @@ async function fetchToken(code) {
         if (!response.ok) throw new Error("Erreur lors de l'obtention du token.");
 
         const tokenData = await response.json();
+        console.log("Token reçu: ", tokenData);  // Vérifie si le token est bien reçu
         localStorage.setItem("access_token", tokenData.access_token);
 
         fetchUser(tokenData.access_token);
