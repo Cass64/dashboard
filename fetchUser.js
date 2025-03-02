@@ -39,6 +39,10 @@ async function fetchUser(accessToken) {
         const userData = await response.json();
         localStorage.setItem("user_data", JSON.stringify(userData));
 
+        // Optionnel : Afficher les données de l'utilisateur dans la console pour déboguer
+        console.log(userData);
+
+        // Rediriger vers la page des serveurs
         window.location.href = "servers.html";
     } catch (error) {
         console.error(error);
